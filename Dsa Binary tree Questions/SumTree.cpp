@@ -19,6 +19,7 @@ class Node {
 class Solution {
     public:
       
+      //O(n^2) Time Complexity 
       int verify(Node* root,int &d){
           
           if(root == NULL){
@@ -33,7 +34,41 @@ class Solution {
           return d;
           
       }
-     
+      
+      //O(n) Time complexity
+      pair<bool,int>SumFast(Node* root){
+        
+        if(root == NULL){
+            pair<bool,int>p = make_pair(true,0);
+            return p;
+        }
+        if(root->left == NULL && root->right == NULL){
+            pair<bool,int>p = make_pair(true,root->data);
+            return p;
+        }
+        
+        
+        pair<bool,int>p1  = SumFast(root->left);
+        pair<bool,int>p2  = SumFast(root->right);
+        
+        bool op1 = p1.first;
+        bool op2 = p2.first;
+        
+        bool op3 = p1.second + p2.second == root->data;
+        
+        
+        pair<bool,int>ans;
+        
+        if(op1 && op2 && op3){
+             ans.first = true;
+             ans.second = root->data * 2;
+        }
+        else{
+            ans.first = false;
+        }
+       
+        return ans;
+    }
       
     
     
@@ -62,6 +97,8 @@ class Solution {
           
           
           return false;
+
+          
        //   return SumFast(root).first;
       }
       // 6 6 9 3 5 1 7 N 4
