@@ -36,6 +36,7 @@ class Solution {
     //     arr.push_back(root->data);
     //     solve(root->left,arr);
     // }
+//updated
     void solve(Node* root,Node* rootRight,bool &check){
         
         if(root == NULL && rootRight != NULL){
