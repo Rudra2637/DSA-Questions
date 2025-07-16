@@ -41,6 +41,59 @@ void insertIntoBST(Node* &root, int data){
     }
 }
 
+
+Node* deleteFromBST(Node* root,int x){
+    if(root == NULL)return NULL;
+
+    if(root->data == x){
+        //Case 1 : Node with no child
+        if(root->left == NULL && root->right == NULL){
+            delete root;
+            return NULL;
+        }
+        else if(root->left == NULL){
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if(root->right == NULL){
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        else{
+            int mini = minVal(root->right)->data;
+            root->data = mini;
+            root->right = deleteFromBST(root->right, mini);
+            return root;
+        }
+    }
+
+    else if(root->data > x){
+        root->left = deleteFromBST(root->left, x);
+        return root;
+    }
+    else {
+        root->right = deleteFromBST(root->right, x);
+        return root;
+    }
+}
+Node* minVal(Node* root){
+    if(root == NULL)return NULL;
+
+    while(root->left != NULL){
+        root = root->left;
+    }
+    return root;
+}
+Node* maxVal(Node* root){
+    if(root == NULL)return NULL;
+
+    while(root->right != NULL){
+        root = root->right;
+    }
+    return root;
+}
 //Recursive version of insertIntoBST
 // Node* insertIntoBST(Node* &root, int data) {
 //     if (root == NULL)  return new Node(data);
