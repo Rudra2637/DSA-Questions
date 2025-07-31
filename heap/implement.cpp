@@ -70,6 +70,16 @@ void heapify(int arr[],int size,int i){
     else return ;
 }
 
+void sort(int arr[],int s){
+    s--;
+    while(s > 1){
+        int i = 1;
+        swap(arr[i],arr[s]);
+        s--;
+        heapify(arr,s,i);
+    }
+}
+
 int main() {
     // Write C++ code here
     heap h;
@@ -86,15 +96,18 @@ int main() {
     
     int arr[7] = {-1,40,30,50,60,20,10};
     int n = 7;
+    
     for(int i=n/2;i>0;i--){
         heapify(arr,n,i);
     }
+    for(int i = 0;i<n;i++)cout<<arr[i]<<" ";
+    cout<<endl;
+    sort(arr,n);
     
     cout<<"Printing the array "<<endl;
     
     for(int i = 0;i<n;i++)cout<<arr[i]<<" ";
     cout<<endl;
     
-
     return 0;
 }
