@@ -16,7 +16,7 @@ public:
         return true;
     }
 
-    void addSolution(vector<vector<string>>& ans, vector<vector<char>>& board) {
+    void addSolution(vector<vector<string>>& ans, vector<vector<char>>& board) {          //Yes
         vector<string> temp;
         for (int i = 0; i < board.size(); i++) {
             string row(board[i].begin(), board[i].end());
