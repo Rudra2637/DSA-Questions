@@ -18,8 +18,7 @@ class heap{
                 swap(arr[parent],arr[i]);
             }
             i = i/2;
-        }
-          
+        } 
     }
     
     void deletion(){
