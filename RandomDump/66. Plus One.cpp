@@ -40,9 +40,8 @@ public:
 };
 
 
-
-// if(s == 1 && digits[0] == 9){
-//             digits[0] = 1;
-//             digits.push_back(0);
-//             return digits;
-//         }
+int main() {
+    if(true){
+        cout<<"Yes"<<endl;
+    }
+}
